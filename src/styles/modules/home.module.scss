@@ -1,3 +1,5 @@
+@import "../variables";
+
 .container {
   padding: 0 2rem;
 }
@@ -29,7 +31,7 @@
 }
 
 .title a {
-  color: #0070f3;
+  color: $red-color;
   text-decoration: none;
 }
 
