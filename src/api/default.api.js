@@ -1,7 +1,6 @@
 import axios from "axios";
 
 const baseURL = process.env.API_BASE_URL;
-console.log(baseURL);
 
 class DefaultApi {
   constructor() {
