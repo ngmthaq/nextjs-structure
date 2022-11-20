@@ -1,8 +1,11 @@
 import Image from "next/image";
+import { useTrans } from "../hooks";
 import { MainLayout } from "../layouts";
 import styles from "../styles/modules/home.module.scss";
 
-const Home = () => {
+const Home = ({ locale, locales }) => {
+  const { trans, changeLocale } = useTrans(locale, locales);
+
   return (
     <MainLayout
       title="Create Next App"
@@ -11,13 +14,22 @@ const Home = () => {
       <div className={styles.container}>
         <main className={styles.main}>
           <h1 className={styles.title}>
-            Welcome to <a href="https://nextjs.org">Next.js!</a>
+            {trans("hello")} <a href="https://nextjs.org">Next.js!</a>
           </h1>
 
           <p className={styles.description}>
-            Get started by editing{" "}
+            Get started by editing
             <code className={styles.code}>pages/index.js</code>
           </p>
+
+          <div style={{ paddingBottom: "48px" }}>
+            <code className={styles.code} onClick={() => changeLocale("en")}>
+              EN
+            </code>
+            <code className={styles.code} onClick={() => changeLocale("vi")}>
+              VI
+            </code>
+          </div>
 
           <div className={styles.grid}>
             <a href="https://nextjs.org/docs" className={styles.card}>
@@ -75,3 +87,12 @@ const Home = () => {
 };
 
 export default Home;
+
+export async function getServerSideProps(context) {
+  return {
+    props: {
+      locales: context.locales,
+      locale: context.locale,
+    }, // will be passed to the page component as props
+  };
+}
