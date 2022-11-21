@@ -6,3 +6,34 @@ $light-color: #fcfcfc;
 $dark-color: #2e2e2e;
 $bg-light-color: #ffffff;
 $gb-grey-color: #e5e5e5;
+
+$xs: 600px; // Smartphone
+$sm: 768px; // Small Tablet
+$md: 992px; // Tablet
+$lg: 1200px; // Small Laptop or Desktop
+$xl: 1360px; // Laptop and Desktop
+
+// Media queries
+@mixin Responsive($canvas) {
+    @if $canvas == xs {
+        @media only screen and (max-width: calc($xs - 1px)) {
+            @content;
+        }
+    } @else if $canvas == sm {
+        @media only screen and (max-width: calc($sm - 1px)) {
+            @content;
+        }
+    } @else if $canvas == md {
+        @media only screen and (max-width: calc($md - 1px)) {
+            @content;
+        }
+    } @else if $canvas == lg {
+        @media only screen and (max-width: calc($lg - 1px)) {
+            @content;
+        }
+    } @else if $canvas == xl {
+        @media only screen and (max-width: calc($xl - 1px)) {
+            @content;
+        }
+    }
+}
