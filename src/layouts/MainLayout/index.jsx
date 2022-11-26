@@ -1,5 +1,7 @@
 import React from "react";
 import SeoLayout from "../SeoLayout";
+import Footer from "./Footer";
+import Header from "./Header";
 
 const MainLayout = ({ children, title, description, url, imgUrl }) => {
   return (
@@ -9,7 +11,9 @@ const MainLayout = ({ children, title, description, url, imgUrl }) => {
       url={url}
       imgUrl={imgUrl}
     >
-      {children}
+      <Header />
+      <div className="main-layout">{children}</div>
+      <Footer />
     </SeoLayout>
   );
 };

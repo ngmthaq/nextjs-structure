@@ -1,5 +1,6 @@
 import React from "react";
 import Head from "next/head";
+import Script from "next/script";
 import { NoSSR } from "../../components";
 
 const SeoLayout = ({ children, title, description, url, imgUrl }) => {
@@ -35,6 +36,7 @@ const SeoLayout = ({ children, title, description, url, imgUrl }) => {
       <NoSSR>
         <div className="seo-layout">{children}</div>
       </NoSSR>
+      <Script></Script>
     </>
   );
 };
