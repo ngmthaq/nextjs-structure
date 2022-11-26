@@ -1,10 +1,10 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 
-import { HelloRepo } from "../../../repo";
+import { DefaultDatabase } from "../../../database";
 
 const handler = async (req, res) => {
   if (req.method === "GET") {
-    return getUsers(req, res);
+    return handleGetMethod(req, res);
   } else if (req.method === "POST") {
     res.status(200).json({ message: "POST METHOD" });
   } else {
@@ -12,8 +12,8 @@ const handler = async (req, res) => {
   }
 };
 
-const getUsers = async (req, res) => {
-  const users = await HelloRepo.getUsers();
+const handleGetMethod = async (req, res) => {
+  const users = await new DefaultDatabase().query("SELECT * FROM users");
   res.status(200).json(users);
 };
 
