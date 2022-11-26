@@ -6,11 +6,16 @@ const useTrans = (locale, locales) => {
   const langs = { en, vi };
   const router = useRouter();
 
-  const trans = (key) => {
+  const trans = (key, placeholders = {}) => {
     if (locales.includes(locale)) {
       const lang = langs[locale];
       if (lang[key] !== undefined) {
-        return lang[key];
+        let translated = lang[key];
+        Object.entries(placeholders).forEach(([key, value]) => {
+          translated = translated.replace(":" + key + ":", value);
+        });
+
+        return translated;
       }
     }
 
